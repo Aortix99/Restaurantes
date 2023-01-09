@@ -4,7 +4,20 @@ public class MenuDto {
     private int id;
     private int TipoDeMenu;
     private int IdRestaurante;
+
+    private IngredienteDto ingredienteDto;
+
+    public IngredienteDto getIngredienteDto() {
+        return ingredienteDto;
+    }
+
+    public void setIngredienteDto(IngredienteDto ingredienteDto) {
+        this.ingredienteDto = ingredienteDto;
+    }
+
     private String NombreM;
+    private float precio;
+
     public int getId() {
         return id;
     }
@@ -21,9 +34,6 @@ public class MenuDto {
         IdRestaurante = idRestaurante;
     }
 
-    private IngredienteDto ingredienteDto;
-    private float precio;
-
     public int getTipoDeMenu() {
         return TipoDeMenu;
     }
@@ -38,14 +48,6 @@ public class MenuDto {
 
     public void setNombreM(String nombreM) {
         NombreM = nombreM;
-    }
-
-    public IngredienteDto getIngredienteDto() {
-        return ingredienteDto;
-    }
-
-    public void setIngredienteDto(IngredienteDto ingredienteDto) {
-        this.ingredienteDto = ingredienteDto;
     }
 
     public float getPrecio() {

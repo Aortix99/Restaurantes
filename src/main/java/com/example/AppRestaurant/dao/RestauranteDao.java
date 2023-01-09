@@ -141,7 +141,7 @@ public class RestauranteDao implements RestauranteDaoInterface{
 
     @Override
     public void delete(int   i) throws DaoEXception {
-        String Delete="DELETE FROM `restaurante` WHERE id=?";
+        String Delete="DELETE FROM restaurante WHERE id=?";
         PreparedStatement statement=null;
         Connection connection= ManagerConexion.getInstance().getConnection();
         try{

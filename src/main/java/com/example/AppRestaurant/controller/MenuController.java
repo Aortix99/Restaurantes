@@ -26,7 +26,7 @@ private MenuFdcInterface fcd;
         }
         return ResponseEntity.ok(message);
     }
-    @GetMapping("/ingrediente/menu/{i}")
+    @GetMapping("/menu/delete/{i}")
     public ResponseEntity<Message> delete(@PathVariable int i) throws ControllerEXcption{
         Message message=new Message("0","TRUE", null);
         try{

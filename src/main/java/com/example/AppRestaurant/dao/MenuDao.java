@@ -1,6 +1,7 @@
 package com.example.AppRestaurant.dao;
 
 import com.example.AppRestaurant.conexion.ManagerConexion;
+import com.example.AppRestaurant.dto.IngredienteDto;
 import com.example.AppRestaurant.dto.MenuDto;
 import com.example.AppRestaurant.exception.DaoEXception;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,7 @@ public class MenuDao implements MenuDaoInterface{
     @Override
     public List<MenuDto> selectall() throws DaoEXception {
         List<MenuDto> list=new ArrayList<>();
-        String Select="SELECT id, id_restaurante, tipo_menu, nombre, precio FROM menu";
+        String Select="SELECT M.id, M.id_restaurante, M.tipo_menu, M.nombre, M.precio, sum(I.calorias) as calorias FROM menu AS M INNER JOIN ingrediente AS I on M.id=I.id_menu;";
         PreparedStatement statement=null;
         ResultSet resultSet=null;
         MenuDto almacena=null;
@@ -30,6 +31,12 @@ public class MenuDao implements MenuDaoInterface{
             almacena=new MenuDto();
             almacena.setId(resultSet.getInt("id"));
             almacena.setIdRestaurante(resultSet.getInt("id_restaurante"));
+
+            IngredienteDto ingredienteDto=new IngredienteDto();
+            ingredienteDto.setCalorias(resultSet.getInt("calorias"));
+            almacena.setIngredienteDto(ingredienteDto);
+
+
             almacena.setTipoDeMenu(resultSet.getInt("tipo_menu"));
             almacena.setNombreM(resultSet.getString("nombre"));
             almacena.setPrecio(resultSet.getFloat("precio"));

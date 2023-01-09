@@ -16,6 +16,7 @@ public class MenuMgr implements MenuMgrInterface{
     public void save(MenuDto M) throws ManagerEXception {
     try{
         MenuDto tp=Dao.SelectById(M);
+
         if(tp==null){
             Dao.insert(M);
         }else {
